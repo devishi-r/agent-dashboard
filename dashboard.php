@@ -46,3 +46,7 @@ $agents = $conn->query("SELECT * FROM `agent-details`");
 </tr>
 <?php endwhile; ?>
 </table>
+<br /><br />
+<form action="index.php" method="POST" style="display:inline;">
+    <input type="submit" value="Logout">
+</form>
