@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             // if($password==$row["password"]){
 
                 $_SESSION['username'] = $row['username']; 
-                $_SESSION['error'] = "Login successful!";
+                $_SESSION['error'] = "";
                 header("Location: dashboard.php");
                 exit();
             } else {

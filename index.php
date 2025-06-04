@@ -22,7 +22,8 @@ include("database.php");
         <input type="text" name="password" required/><br/><br/>
 
         <button type="submit">Login</button>
-    </form>
+    </form><br />
+    <button type="button" onclick="window.location.href='add-agent.php'">Sign Up</button>
 
     <?php
         if (isset($_SESSION['error'])) {
