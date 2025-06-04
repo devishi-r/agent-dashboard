@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
     if ($row = $result->fetch_assoc()) {
         // Toggle logic
         $current_status = $row['status'];
-        $new_status = ($current_status === 'active') ? 'Inactive' : 'Active';
+        $new_status = ($current_status === 'Active') ? 'Inactive' : 'Active';
 
         $update_stmt = $conn->prepare("UPDATE `agent-details` SET status = ?, modified_at = NOW() WHERE id = ?");
         $update_stmt->bind_param("si", $new_status, $id);
