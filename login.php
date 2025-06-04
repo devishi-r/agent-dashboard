@@ -5,7 +5,7 @@ include("database.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $username = $conn->real_escape_string($_POST["username"]); // Basic sanitation
-    $password = $conn->real_escape_string($_POST["password"]); // Password will be hashed, so no real_escape_string here
+    $password = $_POST["password"]; // Password will be hashed, so no real_escape_string here
 
     $sql = "SELECT username, password FROM `agent-details` WHERE username = ?";
     $stmt = $conn->prepare($sql);
@@ -19,20 +19,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
+            echo "Entered password: " . $password . "<br>";
+            echo "Hashed from DB: " . $row['password'] . "<br>";
 
-            // if (password_verify($password, $row["password"])) { 
-            if($password==$row["password"]){
+
+            if (password_verify($password, $row["password"])) { 
+            // if($password==$row["password"]){
 
                 $_SESSION['username'] = $row['username']; 
-
+                $_SESSION['error'] = "Login successful!";
                 header("Location: dashboard.php");
                 exit();
             } else {
-                $error_message = "Invalid password";
+                $_SESSION['error'] = "Incorrect password";
             }
         } else {
-            $error_message = "Invalid username";
+            $_SESSION['error'] = "Invalid username";
         }
         $stmt->close();
+        header("Location: index.php");
+        exit();
     }
 }

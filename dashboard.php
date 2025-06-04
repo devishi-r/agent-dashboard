@@ -13,7 +13,9 @@ $agents = $conn->query("SELECT * FROM `agent-details`");
 
 ?>
 
-<h1> Agent List</h1>
+<h1>Dashboard</h1>
+
+<h2> Agent List</h2>
 <table border = "1">
     <tr>
     <th>ID</th>
@@ -46,7 +48,26 @@ $agents = $conn->query("SELECT * FROM `agent-details`");
 </tr>
 <?php endwhile; ?>
 </table>
+
+<h2>Add New Agent</h2>
+<form action="create-agent.php" method="POST">
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Username:</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <input type="submit" value="Create Agent">
+</form>
+
 <br /><br />
+<h2>Logout</h2>
 <form action="index.php" method="POST" style="display:inline;">
     <input type="submit" value="Logout">
 </form>

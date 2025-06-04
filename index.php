@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include("database.php");
 
 ?>
@@ -22,5 +23,13 @@ include("database.php");
 
         <button type="submit">Login</button>
     </form>
+
+    <?php
+        if (isset($_SESSION['error'])) {
+            echo '<div class="error">'.$_SESSION['error'].'</div>';
+            unset($_SESSION['error']); // Clear error after showing once
+        }
+    ?>
+
 </body>
 </html>
