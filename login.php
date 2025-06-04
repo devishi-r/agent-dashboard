@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     if ($stmt === false) {
         $error_message = "Error preparing statement: " . $conn->error;
     } else {
-        $stmt->bind_param("s", $username); // "s" for string type
+        $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             // if (password_verify($password, $row["password"])) { 
             if($password==$row["password"]){
 
-                $_SESSION['username'] = $row['username']; // Store username in session too, if needed
+                $_SESSION['username'] = $row['username']; 
 
                 header("Location: dashboard.php");
                 exit();
