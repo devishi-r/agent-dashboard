@@ -38,31 +38,111 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
-<head><title>Add Agent</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Agent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .login-btn {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #6c757d;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .login-btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
 <body>
+
 <h2>Add New Agent</h2>
 
 <?php if ($error_message): ?>
-    <p style="color:red;"><?php echo htmlspecialchars($error_message); ?></p>
+    <p class="error"><?php echo htmlspecialchars($error_message); ?></p>
 <?php endif; ?>
 
 <form method="POST" action="">
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br>
+    <label>Name:</label>
+    <input type="text" name="name" required>
 
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br>
+    <label>Email:</label>
+    <input type="email" name="email" required>
 
-    <label>Username:</label><br>
-    <input type="text" name="username" required><br>
+    <label>Username:</label>
+    <input type="text" name="username" required>
 
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br>
+    <label>Password:</label>
+    <input type="password" name="password" required>
 
     <input type="submit" value="Add Agent">
 </form>
 
-<button type="button" onclick="window.location.href='index.php'">Login</button>
+<button class="login-btn" onclick="window.location.href='index.php'">Login</button>
+
 </body>
 </html>
+    
