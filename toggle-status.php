@@ -1,9 +1,10 @@
 <?php
+
 session_start();
 include("database.php");
 
-if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
     exit();
 }
 
@@ -20,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
         $current_status = $row['status'];
         $new_status = ($current_status === 'active') ? 'Inactive' : 'Active';
 
-        $update_stmt = $conn->prepare("UPDATE `agent-details` SET status = ?, updated_at = NOW() WHERE id = ?");
+        $update_stmt = $conn->prepare("UPDATE `agent-details` SET status = ?, modified_at = NOW() WHERE id = ?");
         $update_stmt->bind_param("si", $new_status, $id);
         $update_stmt->execute();
     }

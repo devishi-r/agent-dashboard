@@ -40,7 +40,7 @@ $agents = $conn->query("SELECT * FROM `agent-details`");
     <td>    
         <form action="toggle-status.php" method="POST" style="display:inline;">
             <input type="hidden" name="id" value="<?= $agent['id'] ?>">
-            <input type="submit" value="<?= $agent['status'] == 'active' ? 'Deactivate' : 'Activate' ?>">
+            <input type="submit" value="<?= $agent['status'] == 'Active' ? 'Deactivate' : 'Activate' ?>">
         </form>
     </td>
 </tr>
